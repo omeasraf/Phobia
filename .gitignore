@@ -1,5 +1,8 @@
 # Environment Variables
 .env
+.env.example
+.env.local
+.env.staging
 
 # Compiled class file
 *.class
