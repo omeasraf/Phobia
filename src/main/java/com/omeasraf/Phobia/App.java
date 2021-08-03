@@ -29,6 +29,6 @@ public class App {
     }
 
     public static void registerSlashCommands(){
-        jda.upsertCommand(new CommandData("say", "Repeats whatever you type")).queue();
+        jda.upsertCommand(new CommandData("ping", "Repeats whatever you type")).queue();
     }
 }
