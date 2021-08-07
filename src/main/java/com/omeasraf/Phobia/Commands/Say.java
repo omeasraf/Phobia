@@ -12,7 +12,7 @@ public class Say implements Commands {
             event.getChannel().sendTyping().queue();
             event.getChannel().sendMessage(String.join(" ", args)).queue();
         } else {
-            event.getChannel().sendMessage("Invalid arguments!").queue();
+            event.getMessage().reply("Invalid arguments!").queue();
         }
     }
 
