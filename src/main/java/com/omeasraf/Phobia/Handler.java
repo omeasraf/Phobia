@@ -22,9 +22,10 @@ public class Handler extends ListenerAdapter {
 
     @Override
     public void onMessageReceived(MessageReceivedEvent event) {
+
         String[] args = event.getMessage().getContentRaw().split(" ");
-        if (args[0].toLowerCase().contains(Config.prefix.toLowerCase())) {
-            String command = args[0].toLowerCase().split(Config.prefix.toLowerCase())[1];
+        if (args[0].length() > Config.prefix.length() && args[0].toLowerCase().startsWith(Config.prefix.toLowerCase())) {
+            String command = args[0].toLowerCase().replace(Config.prefix.toLowerCase(), "");
             Commands exec = commands.get(command);
             if (exec != null) {
                 exec.execute(event, args.length > 1 ? Arrays.copyOfRange(args, 1, args.length) : new String[]{});
@@ -34,7 +35,6 @@ public class Handler extends ListenerAdapter {
 
     @Override
     public void onSlashCommand(SlashCommandEvent event) {
-        System.out.println("\\u001B[36m " +event.getName() + " Name");
         Commands exec = commands.get(event.getName().toLowerCase());
         if (exec == null) return;
         exec.execute(event);

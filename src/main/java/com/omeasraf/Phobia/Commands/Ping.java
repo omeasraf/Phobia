@@ -10,13 +10,12 @@ public class Ping implements Commands {
         long time = System.currentTimeMillis();
         var msg = event.getChannel().sendMessage("Pong!");
         msg.queue(message -> {
-            message.editMessage(String.format("Pong: %d ms",System.currentTimeMillis() - time))
+            message.editMessage(String.format("Pong: %d ms", System.currentTimeMillis() - time))
                     .queue();
         });
-
-
     }
-    public void execute(SlashCommandEvent event){
+
+    public void execute(SlashCommandEvent event) {
         long time = System.currentTimeMillis();
         event.reply("Pong!").setEphemeral(true)
                 .flatMap(v ->
