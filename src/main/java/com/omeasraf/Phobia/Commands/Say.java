@@ -3,6 +3,8 @@ package com.omeasraf.Phobia.Commands;
 import net.dv8tion.jda.api.events.interaction.SlashCommandEvent;
 import net.dv8tion.jda.api.events.message.MessageReceivedEvent;
 
+import java.util.Objects;
+
 public class Say implements Commands{
     public void execute(MessageReceivedEvent event, String[] args){
         if (args.length > 0) {
@@ -15,6 +17,9 @@ public class Say implements Commands{
     }
 
     public void execute(SlashCommandEvent event){
+        String message = Objects.requireNonNull(event.getOption("message")).getAsString();
+        System.out.println(message);
+        event.reply(message).queue();
 
     }
 }

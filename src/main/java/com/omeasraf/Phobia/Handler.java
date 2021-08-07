@@ -34,12 +34,9 @@ public class Handler extends ListenerAdapter {
 
     @Override
     public void onSlashCommand(SlashCommandEvent event) {
-        System.out.println(event.getName());
+        System.out.println("\\u001B[36m " +event.getName() + " Name");
         Commands exec = commands.get(event.getName().toLowerCase());
-        if (exec == null) return; // make sure we handle the right command
-         // Queue both reply and edit
-        if (exec != null) {
-            exec.execute(event);
-        }
+        if (exec == null) return;
+        exec.execute(event);
     }
 }
