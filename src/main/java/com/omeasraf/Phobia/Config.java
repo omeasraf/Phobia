@@ -2,5 +2,5 @@ package com.omeasraf.Phobia;
 
 
 public class Config {
-    public static String prefix = "-";
+    public static String prefix = "p.";
 }

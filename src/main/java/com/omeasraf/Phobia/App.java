@@ -26,9 +26,11 @@ public class App {
     public static void setStatus(){
         jda.getPresence().setStatus(OnlineStatus.ONLINE);
         jda.getPresence().setActivity(Activity.watching("You!"));
+        jda.ab
     }
 
     public static void registerSlashCommands(){
-        jda.upsertCommand(new CommandData("ping", "Repeats whatever you type")).queue();
+        jda.upsertCommand(new CommandData("ping", "Responds with the ping!")).queue();
+        jda.upsertCommand(new CommandData("info", "Responds with the server info!")).queue();
     }
 }

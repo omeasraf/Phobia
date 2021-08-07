@@ -2,6 +2,7 @@ package com.omeasraf.Phobia;
 
 import com.omeasraf.Phobia.Commands.Commands;
 import com.omeasraf.Phobia.Commands.Info;
+import com.omeasraf.Phobia.Commands.Ping;
 import com.omeasraf.Phobia.Commands.Say;
 import net.dv8tion.jda.api.events.interaction.SlashCommandEvent;
 import net.dv8tion.jda.api.events.message.MessageReceivedEvent;
@@ -16,6 +17,7 @@ public class Handler extends ListenerAdapter {
     Handler() {
         commands.put("say", new Say());
         commands.put("info", new Info());
+        commands.put("ping", new Ping());
     }
 
     @Override
@@ -33,11 +35,11 @@ public class Handler extends ListenerAdapter {
     @Override
     public void onSlashCommand(SlashCommandEvent event) {
         System.out.println(event.getName());
-        if (!event.getName().equals("ping")) return; // make sure we handle the right command
-        long time = System.currentTimeMillis();
-        event.reply("Pong!").setEphemeral(true) // reply or acknowledge
-                .flatMap(v ->
-                        event.getHook().editOriginalFormat("Pong: %d ms", System.currentTimeMillis() - time) // then edit original
-                ).queue(); // Queue both reply and edit
+        Commands exec = commands.get(event.getName().toLowerCase());
+        if (exec == null) return; // make sure we handle the right command
+         // Queue both reply and edit
+        if (exec != null) {
+            exec.execute(event);
+        }
     }
 }

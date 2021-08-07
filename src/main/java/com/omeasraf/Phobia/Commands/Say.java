@@ -1,5 +1,6 @@
 package com.omeasraf.Phobia.Commands;
 
+import net.dv8tion.jda.api.events.interaction.SlashCommandEvent;
 import net.dv8tion.jda.api.events.message.MessageReceivedEvent;
 
 public class Say implements Commands{
@@ -11,5 +12,9 @@ public class Say implements Commands{
         else{
             event.getChannel().sendMessage("Invalid arguments!").queue();
         }
+    }
+
+    public void execute(SlashCommandEvent event){
+
     }
 }
