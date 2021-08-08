@@ -4,7 +4,7 @@ import net.dv8tion.jda.api.events.interaction.SlashCommandEvent;
 import net.dv8tion.jda.api.events.message.MessageReceivedEvent;
 
 public class Ping implements Commands {
-
+    public static String description = "Responds with the ping time!";
     @Override
     public void execute(MessageReceivedEvent event, String[] args) {
         long time = System.currentTimeMillis();

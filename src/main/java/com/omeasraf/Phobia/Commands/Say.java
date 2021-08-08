@@ -6,6 +6,7 @@ import net.dv8tion.jda.api.events.message.MessageReceivedEvent;
 import java.util.Objects;
 
 public class Say implements Commands {
+    public static String description = "Repeats whatever is typed";
     public void execute(MessageReceivedEvent event, String[] args) {
         event.getMessage().delete().queue();
         if (args.length > 0) {

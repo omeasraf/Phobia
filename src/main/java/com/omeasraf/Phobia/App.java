@@ -10,6 +10,7 @@ import net.dv8tion.jda.api.interactions.commands.build.CommandData;
 import net.dv8tion.jda.api.interactions.commands.build.OptionData;
 
 import javax.security.auth.login.LoginException;
+import java.text.MessageFormat;
 
 public class App {
     public static Dotenv dotenv;
@@ -21,19 +22,19 @@ public class App {
         setStatus();
         registerSlashCommands();
         jda.addEventListener(new Handler());
-        System.out.println("\u001B[32m Phobia is listening to new commands!");
+        System.out.println(MessageFormat.format("\u001B[32m {0} is listening to new commands!", Config.name));
     }
 
 
     public static void setStatus() {
         jda.getPresence().setStatus(OnlineStatus.ONLINE);
-        jda.getPresence().setActivity(Activity.watching("You!"));
+        jda.getPresence().setActivity(Activity.playing(Config.name + " | " + Config.prefix));
     }
 
     public static void registerSlashCommands() {
         jda.upsertCommand(new CommandData("ping", "Responds with the ping!")).queue();
-        jda.upsertCommand(new CommandData("info", "Responds with the server info!")).queue();
-        jda.upsertCommand(new CommandData("say", "Responds with the server info!").addOptions(new OptionData(
+        jda.upsertCommand(new CommandData("serverinfo", "Responds with the server info!")).queue();
+        jda.upsertCommand(new CommandData("say", "Repeats whatever is typed").addOptions(new OptionData(
                 OptionType.STRING,
                 "message",
                 "Repeats whatever is typed",
