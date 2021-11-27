@@ -12,6 +12,7 @@ import net.dv8tion.jda.api.interactions.commands.build.OptionData;
 import javax.security.auth.login.LoginException;
 import java.text.MessageFormat;
 
+
 public class App {
     public static Dotenv dotenv;
     public static JDA jda;
@@ -33,6 +34,7 @@ public class App {
 
     public static void registerSlashCommands() {
         jda.upsertCommand(new CommandData("ping", "Responds with the ping!")).queue();
+        jda.upsertCommand(new CommandData("flipcoin", "Returns heads or tails!")).queue();
         jda.upsertCommand(new CommandData("serverinfo", "Responds with the server info!")).queue();
         jda.upsertCommand(new CommandData("say", "Repeats whatever is typed").addOptions(new OptionData(
                 OptionType.STRING,

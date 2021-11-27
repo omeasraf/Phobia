@@ -1,9 +1,6 @@
 package com.omeasraf.Phobia;
 
-import com.omeasraf.Phobia.Commands.Commands;
-import com.omeasraf.Phobia.Commands.ServerInfo;
-import com.omeasraf.Phobia.Commands.Ping;
-import com.omeasraf.Phobia.Commands.Say;
+import com.omeasraf.Phobia.Commands.*;
 import net.dv8tion.jda.api.events.interaction.SlashCommandEvent;
 import net.dv8tion.jda.api.events.message.MessageReceivedEvent;
 import net.dv8tion.jda.api.hooks.ListenerAdapter;
@@ -19,6 +16,8 @@ public class Handler extends ListenerAdapter {
         commands.put("say", new Say());
         commands.put("serverinfo", new ServerInfo());
         commands.put("ping", new Ping());
+        commands.put("flipcoin", new FlipCoin());
+        commands.put("person", new DoesNotExist());
     }
 
     @Override
